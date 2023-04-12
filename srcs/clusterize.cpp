@@ -60,7 +60,7 @@ void	clusterize(const std::string & dummy_data, const std::string & clusterized_
 	}
 	(void) clusterized_data;
 	// !! TODO : create a csv file name clusterized_data, iteratate clusters and print row in file.
-	//generate_fusioned_data(clusters, clusterized_data);
+	generate_fusioned_data(clusters, clusterized_data);
 }
 
 std::vector<t_entry>	get_data(const std::string & dummy_data)
@@ -167,4 +167,40 @@ double distance(const t_entry & it_1, const t_entry & it_2) {
     double dx = it_1.x_position - it_2.x_position;
     double dy = it_1.y_position - it_2.y_position;
     return std::sqrt(dx * dx + dy * dy);
+}
+
+void											generate_fusioned_data( const std::vector<f_entry> & clusters,\
+														 				const std::string & clusterized_data )
+{
+	FILE*	tmp;
+	tmp = fopen(clusterized_data.c_str(), "w");
+	fclose(tmp);
+	std::ofstream file(clusterized_data);
+	if (file.is_open())
+	{
+		file << "f_id,cluster_data,f_timestamp,f_u_id\n";
+		std::vector<f_entry>::const_iterator it;
+		
+		for (it = clusters.begin(); it != clusters.end(); ++it)
+		{
+			file << it->f_id;
+			file << ",";
+			file << it->cluster_data.sensor_id;
+			file << " ";
+			file << it->cluster_data.x_position;
+			file << " ";
+			file << it->cluster_data.y_position;
+			file << ",";
+			file << it->f_timestamp;
+			file << ",";
+			file << it->f_u_id;
+			file << "\n";
+		}
+		file.close();
+	}
+	else
+	{
+		std::cout << "ERROR: Could not open the clustrized_data\n";
+	}
+
 }

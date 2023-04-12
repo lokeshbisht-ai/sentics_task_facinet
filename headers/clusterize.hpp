@@ -43,4 +43,5 @@ std::map<std::string, std::vector<t_entry> >	group_by_sensors(const std::vector<
 std::map<std::string, std::vector<t_entry> >	group_by_uniq_id(const std::vector<t_entry> & data);
 std::vector<std::vector<t_entry> > 				group_by_distance(const std::vector<t_entry> & data);
 double 											distance(const t_entry & it_1, const t_entry & it_2);
+void											generate_fusioned_data(const std::vector<f_entry> & clusters, const std::string & clusterized_data);
 #endif

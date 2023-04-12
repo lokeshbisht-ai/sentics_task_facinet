@@ -58,10 +58,9 @@ void	clusterize(const std::string & dummy_data, const std::string & clusterized_
 			}
 		}
 	}
-
-	(void)clusterized_data;
-	
+	(void) clusterized_data;
 	// !! TODO : create a csv file name clusterized_data, iteratate clusters and print row in file.
+	//generate_fusioned_data(clusters, clusterized_data);
 }
 
 std::vector<t_entry>	get_data(const std::string & dummy_data)

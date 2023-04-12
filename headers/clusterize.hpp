@@ -8,6 +8,7 @@
 # include <algorithm>
 # include <map>
 # include <cmath>
+# include <cstdio>
 
 # define  NB_COLUMNS 6
 
